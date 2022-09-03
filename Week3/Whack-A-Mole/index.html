@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body onload = "javascript:randomMole()">
+    <script>
+      //var timeout = setTimeout(function(){yourFunction()},1000);
+      //repeated events, gap in milliseconds
+      //var interval = setInterval(timerPrint,1000);
+      //var interval = setInterval(timerPrint,Math.floor(Math.random() * 700 + 300));
+        
+      var score = 0;
+    // function timerPrint(){
+    //  console.log("pls whack the mole");
+    //}
+
+      //if the user clicked on a mole, turn that mole into a hole
+      function toHole(id){ 
+        image_id = "moleEx" + id.toString()
+        if(document.getElementById(image_id).src == "mole.png"){
+          score = score + 1;
+          //console.log("Score is " + score.toString());
+          if (score < 10){ //mole reappear
+            setTimeout(randomMole,Math.floor(Math.random() * 2500 + 500));
+          } else { 
+            setTimeout(randomMole,Math.floor(Math.random() * 1000 + 500));
+          }
+          if(score > 15){
+            randomMole(); //more moles!
+          }
+        } else {
+          score = score - 1;
+          //console.log("Score is " + score.toString());
+        }
+        
+        document.getElementById('score').innerHTML = "Score: " + score.toString();
+        document.getElementById(image_id).src = "hole.png";
+        
+      }
+      
+      function randomMole(){
+        random_number = Math.floor(Math.random() * 5 + 1);
+        random_id = "moleEx" + random_number.toString();
+        console.log(random_id)
+        document.getElementById(random_id).src="mole.png";
+//         if(score > 25){
+//           setTimeout(moleEscape(random_id), 500);
+//         } else if (score > 10){
+//           setTimeout(moleEscape(random_id), 1000);
+//         }
+      }
+      
+//       function moleEscape(id){
+//         if(document.getElementById(id).src == "https://cocalc15.ai-camp.dev/2f2136f4-9d64-413e-a9da-9d1fffb65fc7/raw/Stephen/Week2/mole.png"){
+//           //score = score - 1
+//           document.getElementById(id).src = "hole.png";
+//           randomMole()
+//         } 
+//       }<pre></pre>
+    </script>
+    
+    <h1>
+      Whack-a-Mole
+    </h1>
+    
+    <h2 id = 'score'>
+      Score: 0
+    </h2>
+    
+    <div>
+    <button type="button" onclick="toHole(1)"><img src = "hole.jpg" width = "175" id = "moleEx1" ></button>
+      <button type="button" onclick="toHole(2)"><img src = "hole.jpg" width = "175" id = "moleEx2"></button> 
+      <button type="button" onclick="toHole(3)"><img src = "hole.jpg" width = "175" id = "moleEx3"></button>
+    </div>
+    
+    <div>
+      <button type="button" onclick="toHole(4)"><img src = "hole.jpg" width = "175" id = "moleEx4"></button>
+      <button type="button" onclick="toHole(5)"><img src = "hole.jpg" width = "175"  id = "moleEx5"></button> 
+      <button type="button" onclick="toHole(6)"><img src = "hole.jpg" width = "175" id = "moleEx6"></button> 
+    </div>
+    
+    
+    
+  </body>
+</html><div style='text-align:right'></div>
